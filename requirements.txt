@@ -1,0 +1,14 @@
+pandas
+numpy
+scikit-learn
+spacy
+nltk
+gensim
+matplotlib
+seaborn
+wordcloud
+streamlit
+joblib
+praw
+requests
+python-dotenv
