@@ -1,0 +1,7 @@
+brand,predicted_sentiment,count
+Amazon,positive,14536
+Amazon,neutral,1013
+Amazon,negative,562
+AmazonBasics,positive,9321
+AmazonBasics,negative,1617
+AmazonBasics,neutral,1174
