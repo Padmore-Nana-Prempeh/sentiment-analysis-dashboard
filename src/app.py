@@ -210,7 +210,7 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
 
         st.subheader("Top complaint phrases")
 
-        negative_text = pred[pred["predicted_sentiment"] == "negative"]["text"]
+    negative_text = pred[pred["predicted_sentiment"] == "negative"]["text"]
 
     if len(negative_text) > 0:
         text_blob = " ".join(negative_text.astype(str)).lower()
@@ -251,9 +251,8 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
                 elif w.endswith("s") and len(w) > 4:
                     w = w[:-1]
                 normalized.append(w)
-            words = normalized
 
-            key = " ".join(words)
+            key = " ".join(normalized)
             clean_phrases[key] = clean_phrases.get(key, 0) + count
 
         final_phrase_counts = (
