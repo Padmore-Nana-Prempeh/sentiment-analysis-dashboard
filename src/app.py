@@ -208,15 +208,14 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
     else:
         st.info("No negative product reviews found in the current filtered dataset.")
 
-    st.subheader("Top complaint phrases")
+        st.subheader("Top complaint phrases")
 
-    negative_text = pred[pred["predicted_sentiment"] == "negative"]["text"]
+        negative_text = pred[pred["predicted_sentiment"] == "negative"]["text"]
 
     if len(negative_text) > 0:
         text_blob = " ".join(negative_text.astype(str)).lower()
         words = re.findall(r"\b[a-z]{4,}\b", text_blob)
 
-    
         custom_stopwords = set(ENGLISH_STOP_WORDS).union(
             {
                 "amazon", "product", "item", "would", "could",
@@ -224,18 +223,14 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
                 "just", "like", "good", "great", "time", "work",
                 "don", "didn", "doesn", "isn", "wasn",
                 "brand", "device", "thing",
-                "alkaline", "amazonbasics", "basic", "pack", 
-                "count", "aaa", "aa","used", "lasted"
-
-
+                "alkaline", "amazonbasics", "basic", "pack",
+                "count", "aaa", "aa", "used", "lasted"
             }
         )
 
         filtered_words = [w for w in words if w not in custom_stopwords]
-
         cleaned_text = " ".join(filtered_words)
 
-        # BIGRAMS (phrases)
         vectorizer = CountVectorizer(ngram_range=(2, 2), max_features=30)
         X = vectorizer.fit_transform([cleaned_text])
 
@@ -249,8 +244,6 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
         for phrase, count in phrase_counts.items():
             words = phrase.split()
 
-
-            # normalize plural (batteries → battery)
             normalized = []
             for w in words:
                 if w.endswith("ies") and len(w) > 4:
@@ -260,9 +253,7 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
                 normalized.append(w)
             words = normalized
 
-            # sort words to merge duplicates (battery life vs life battery)
             key = " ".join(words)
-
             clean_phrases[key] = clean_phrases.get(key, 0) + count
 
         final_phrase_counts = (
@@ -271,11 +262,16 @@ if "name" in pred.columns and "predicted_sentiment" in pred.columns:
             .head(15)
         )
 
+        fig, ax = plt.subplots(figsize=(10, 5))
+        final_phrase_counts.plot(kind="bar", ax=ax)
+        ax.set_title("Top Complaint Phrases")
+        ax.set_xlabel("Phrase")
+        ax.set_ylabel("Frequency")
+        plt.xticks(rotation=45, ha="right")
+        plt.tight_layout()
 
-
-
-
-        st.bar_chart(final_phrase_counts)
+        st.pyplot(fig)
+        plt.close(fig)
     else:
         st.info("No negative complaints found.")
 
