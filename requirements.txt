@@ -3,7 +3,6 @@ numpy
 scikit-learn
 spacy
 nltk
-gensim
 matplotlib
 seaborn
 wordcloud
