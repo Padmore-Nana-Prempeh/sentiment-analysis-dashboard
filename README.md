@@ -1,6 +1,10 @@
 #  Social Media Sentiment & Market Trend Analysis Dashboard
 
-An end-to-end machine learning and NLP system for analyzing large-scale product reviews, extracting complaint patterns, and uncovering market trends through an interactive dashboard.
+<p align="center">
+  <img src="images/dashboard.png" width="90%">
+</p>
+
+An end-to-end machine learning and NLP system that analyzes large-scale product reviews to uncover sentiment trends, extract high-impact complaint patterns, and generate actionable business insights through an interactive dashboard.
 
 ---
 
@@ -76,6 +80,7 @@ The system processes **28,000+ product reviews** and identifies key signals such
   <img src="images/sentiment.png" width="45%">
 </p>
 
+
 ---
 
 ##  Tech Stack
@@ -115,13 +120,19 @@ streamlit run src/app.py
 
 ---
 
-##  Key Results
+## Key Results
 
-* Processed **28,000+ reviews**
-* Built a full pipeline from raw data to insights
-* Extracted high-impact complaint patterns from unstructured text
-* Developed an interactive dashboard for exploration
+- Processed **28,000+ real-world product reviews**
+- Achieved **high-accuracy sentiment classification** using TF-IDF + Logistic Regression
+- Extracted **high-frequency complaint signals** from unstructured text
+- Built a **fully automated NLP pipeline** from raw data to insights
+- Delivered an **interactive dashboard for real-time exploration**
 
+---
+
+## Why This Project Matters
+
+This system demonstrates how unstructured customer feedback can be transformed into measurable signals that support product decisions, customer experience improvements, and competitive analysis.
 ---
 
 ##  Business Impact
@@ -144,10 +155,10 @@ This system can be used to:
 * Implement TF-IDF weighted phrase ranking
 ---
 
-##  Author
- HEAD
+## Author
 
-**Padmore Nana Prempeh**
+**Padmore Nana Prempeh**  
+Data Engineering | Data Science & Machine Learning
 
 
 
