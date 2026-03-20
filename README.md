@@ -141,11 +141,12 @@ This system can be used to:
 * Upgrade to transformer-based models (BERT)
 * Add real-time data ingestion
 * Implement TF-IDF weighted phrase ranking
-
 ---
 
 ##  Author
+ HEAD
 
 **Padmore Nana Prempeh**
+
 
 
