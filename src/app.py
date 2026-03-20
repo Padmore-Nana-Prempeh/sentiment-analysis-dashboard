@@ -151,17 +151,19 @@ trend_col1, trend_col2 = st.columns(2)
 
 with trend_col1:
     st.subheader("Average sentiment over time")
-    if "period" in ts.columns and "avg_sentiment_smooth" in ts.columns:
-        st.line_chart(ts.set_index("period")["avg_sentiment_smooth"], height=350)
+    sentiment_trend_path = os.path.join(outputs_dir, "sentiment_trend.png")
+    if os.path.exists(sentiment_trend_path):
+        st.image(sentiment_trend_path, use_container_width=True)
     else:
-        st.info("No sentiment trend data available.")
+        st.info("No sentiment trend chart available.")
 
 with trend_col2:
     st.subheader("Post volume over time")
-    if "period" in ts.columns and "posts_smooth" in ts.columns:
-        st.line_chart(ts.set_index("period")["posts_smooth"], height=350)
+    post_volume_path = os.path.join(outputs_dir, "post_volume.png")
+    if os.path.exists(post_volume_path):
+        st.image(post_volume_path, use_container_width=True)
     else:
-        st.info("No post volume trend data available.")
+        st.info("No post volume chart available.")
 
 st.divider()
 
