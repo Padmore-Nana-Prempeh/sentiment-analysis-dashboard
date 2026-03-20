@@ -7,6 +7,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
 ![Status](https://img.shields.io/badge/Project-Complete-brightgreen)
 
+Live App: https://sentiment-do-dashboard.streamlit.app 
 
 <p align="center">
   <img src="images/dashboard.png" width="90%">
