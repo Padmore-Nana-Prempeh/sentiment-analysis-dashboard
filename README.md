@@ -131,8 +131,8 @@ streamlit run src/app.py
 ---
 
 ## Why This Project Matters
+ This system demonstrates how unstructured customer feedback can be transformed into measurable signals that support product decisions, customer experience improvements, and competitive analysis.
 
-This system demonstrates how unstructured customer feedback can be transformed into measurable signals that support product decisions, customer experience improvements, and competitive analysis.
 ---
 
 ##  Business Impact
