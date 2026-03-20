@@ -1,148 +1,151 @@
-# Social Media Sentiment & Market Trend Analysis System
+#  Social Media Sentiment & Market Trend Analysis Dashboard
 
-An end-to-end Python project for collecting social media text, running sentiment analysis, extracting product feedback themes, detecting market trends, and visualizing brand perception.
+An end-to-end machine learning and NLP system for analyzing large-scale product reviews, extracting complaint patterns, and uncovering market trends through an interactive dashboard.
 
-## What this project does
+---
 
-- Loads or collects 20,000+ social posts about a brand or product
-- Cleans text and runs NLP preprocessing with spaCy
-- Trains a sentiment classifier using TF-IDF + Logistic Regression
-- Evaluates the model with accuracy, F1-score, classification report, and confusion matrix
-- Extracts discussion themes with LDA topic modeling
-- Detects daily or weekly sentiment shifts and trend spikes
-- Generates charts and an optional Streamlit dashboard
+##  Overview
 
-## Project structure
+This project transforms raw customer review data into actionable insights by combining sentiment classification, natural language processing, trend analysis, and interactive visualization.
+
+The system processes **28,000+ product reviews** and identifies key signals such as customer dissatisfaction, product weaknesses, and brand perception.
+
+---
+
+##  Key Features
+
+### Sentiment Analysis
+
+* TF-IDF + Logistic Regression model
+* Classifies reviews into **positive, neutral, and negative sentiment**
+* Evaluated using accuracy, F1-score, and confusion matrix
+
+---
+
+###  Complaint Phrase Extraction (NLP)
+
+* Custom text preprocessing (regex + stopwords)
+* N-gram (bigram) extraction
+* Phrase normalization and cleaning
+
+**Example insights:**
+
+* battery life
+* battery dead
+* waste money
+* cheap battery
+
+---
+
+###  Trend Analysis
+
+* Sentiment over time
+* Detection of spikes in review activity
+* Identification of peak negative sentiment periods
+
+---
+
+###  Brand & Product Insights
+
+* Brand-level sentiment comparison
+* Identification of worst-performing products
+* Detection of competitor mentions (e.g., Duracell vs Energizer)
+
+---
+
+###  Interactive Dashboard (Streamlit)
+
+* Real-time filtering and exploration
+* Visualizations:
+
+  * Sentiment distribution
+  * Complaint phrases
+  * Time-series trends
+  * Brand ranking
+
+---
+
+##  Dashboard Preview
+
+(Add screenshots in an `images/` folder and link them below)
+
+```md
+![Dashboard](images/dashboard.png)
+![Complaint Phrases](images/complaints.png)
+![Sentiment Distribution](images/sentiment.png)
+```
+
+---
+
+##  Tech Stack
+
+* Python
+* Pandas / NumPy
+* Scikit-learn
+* NLP (regex, n-grams, stopwords)
+* Streamlit
+
+---
+
+##  Project Structure
 
 ```text
-social_media_sentiment_market_trend_analysis/
-│
-├── data/
-│   ├── raw/                     # place raw CSV files here
-│   └── processed/               # generated cleaned data
-├── notebooks/                   # EDA / experiments
-├── src/
-│   ├── collect.py               # load or collect data
-│   ├── preprocess.py            # cleaning and spaCy preprocessing
-│   ├── train.py                 # model training and evaluation
-│   ├── topics.py                # topic modeling
-│   ├── trends.py                # trend detection logic
-│   ├── visualize.py             # charts and word clouds
-│   ├── app.py                   # optional Streamlit dashboard
-│   └── pipeline.py              # run the full pipeline
-├── models/                      # saved vectorizer/model files
-├── outputs/                     # metrics, charts, topic tables, trend files
-├── requirements.txt
-└── README.md
+src/
+├── app.py               # Streamlit dashboard
+├── train.py             # Model training
+├── preprocess.py        # Text cleaning
+├── topics.py            # Topic modeling
+├── trends.py            # Trend analysis
+├── pipeline.py          # End-to-end workflow
 ```
 
-## Expected input data
+---
 
-This project supports two main workflows.
-
-### Option 1: Pre-labeled sentiment training data
-Use a CSV like Sentiment140 or your own labeled data with columns like:
-
-- `text`
-- `label` where values are negative / neutral / positive, or numeric labels that can be mapped
-- `created_at` optional but recommended for trend plots
-- `brand` optional
-
-### Option 2: Brand-specific posts for analysis
-Use a CSV with columns like:
-
-- `text`
-- `created_at`
-- `brand`
-- `source`
-
-You can train on one dataset and score another.
-
-## Installation
+##  How to Run
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate   # macOS/Linux
-# .venv\Scripts\activate    # Windows
+git clone https://github.com/Padmore-Nana-Prempeh/sentiment-analysis-dashboard.git
+cd sentiment-analysis-dashboard
 
 pip install -r requirements.txt
-python -m spacy download en_core_web_sm
-```
 
-## Quick start
-
-### 1. Train a sentiment model
-
-```bash
-python src/train.py \
-  --input data/raw/sentiment_training.csv \
-  --text-col text \
-  --label-col label \
-  --output-dir outputs \
-  --model-dir models
-```
-
-### 2. Run end-to-end analysis on brand posts
-
-```bash
-python src/pipeline.py \
-  --posts data/raw/brand_posts.csv \
-  --model-path models/sentiment_model.joblib \
-  --vectorizer-path models/tfidf_vectorizer.joblib \
-  --output-dir outputs \
-  --date-col created_at \
-  --brand-col brand
-```
-
-### 3. Launch the dashboard
-
-```bash
 streamlit run src/app.py
 ```
 
-## Recommended columns
+---
 
-| Column | Required | Purpose |
-|---|---:|---|
-| text | Yes | raw social post text |
-| label | For training | sentiment class |
-| created_at | For trends | time series analysis |
-| brand | No | filter or compare brands |
-| source | No | Twitter, Reddit, etc. |
+##  Key Results
 
-## Output files
+* Processed **28,000+ reviews**
+* Built a full pipeline from raw data to insights
+* Extracted high-impact complaint patterns from unstructured text
+* Developed an interactive dashboard for exploration
 
-After running the project, you should see:
+---
 
-- `outputs/metrics.json`
-- `outputs/classification_report.csv`
-- `outputs/confusion_matrix.csv`
-- `outputs/predicted_posts.csv`
-- `outputs/topic_keywords.csv`
-- `outputs/topic_assignments.csv`
-- `outputs/daily_sentiment.csv`
-- `outputs/trend_spikes.csv`
-- `outputs/*.png` charts
+##  Business Impact
 
-## Notes on accuracy
+This system can be used to:
 
-The baseline pipeline uses TF-IDF + Logistic Regression because it is fast, interpretable, and often performs strongly on short text classification tasks. Reaching 85%+ accuracy depends heavily on data quality, label quality, class balance, and domain fit.
+* Detect product failures early
+* Monitor customer sentiment in real time
+* Identify key drivers of negative feedback
+* Compare brand performance
+* Support product improvement decisions
 
-## Optional live collection
+---
 
-`src/collect.py` includes helpers for:
+##  Future Improvements
 
-- loading CSV files
-- filtering by brand keywords
-- collecting Reddit submissions/comments with `praw` if credentials are available
+* Deploy dashboard (Streamlit Cloud)
+* Upgrade to transformer-based models (BERT)
+* Add real-time data ingestion
+* Implement TF-IDF weighted phrase ranking
 
-Twitter/X API support is intentionally left as a simple placeholder because access rules can change. You can add your own authenticated fetcher in the same module.
+---
 
-## Stretch upgrades
+##  Author
 
-- Replace the baseline model with a fine-tuned transformer
-- Add NER with spaCy for brand and product extraction
-- Expose sentiment scoring with FastAPI
-- Dockerize the app
-- Add multi-brand benchmarking
+**Padmore Nana Prempeh**
+
 
