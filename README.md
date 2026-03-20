@@ -67,13 +67,12 @@ The system processes **28,000+ product reviews** and identifies key signals such
 
 ##  Dashboard Preview
 
-(Add screenshots in an `images/` folder and link them below)
 
-```md
-![Dashboard](images/dashboard.png)
-![Complaint Phrases](images/complaints.png)
+![Dashboard Overview](images/dashboard.png)
+
+![Complaint Phrases Analysis](images/complaints.png)
+
 ![Sentiment Distribution](images/sentiment.png)
-```
 
 ---
 
