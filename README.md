@@ -1,5 +1,13 @@
 #  Social Media Sentiment & Market Trend Analysis Dashboard
 
+
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Modeling-orange)
+![NLP](https://img.shields.io/badge/NLP-Text%20Processing-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
+![Status](https://img.shields.io/badge/Project-Complete-brightgreen)
+
+
 <p align="center">
   <img src="images/dashboard.png" width="90%">
 </p>
@@ -132,6 +140,21 @@ streamlit run src/app.py
 
 ## Why This Project Matters
  This system demonstrates how unstructured customer feedback can be transformed into measurable signals that support product decisions, customer experience improvements, and competitive analysis.
+
+---
+
+## Dataset
+
+This project utilizes a publicly available **Amazon product review dataset** containing **28,000+ customer reviews**.
+
+The dataset includes:
+- Raw review text
+- Product and brand information
+- Timestamped review activity
+
+Source: [Kaggle / Amazon Reviews Dataset] 
+
+The data was used for sentiment classification, complaint extraction, and trend analysis.
 
 ---
 
